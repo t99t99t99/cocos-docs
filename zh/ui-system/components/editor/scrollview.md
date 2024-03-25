@@ -73,9 +73,9 @@ export class example extends Component {
         scrollview.scrollEvents.push(scrollViewEventHandler);
     }
 
-    callback(scrollview, eventType, customEventData){
+    callback(scrollview:Scrollview, eventType:number, customEventData:string){
         // 这里 scrollview 是一个 Scrollview 组件对象实例
-        // 这里的 eventType === ScrollView.EventType enum 里面的值
+        // 这里的 eventType === ScrollView.EventType enum 里面的值(string)对应的数值(number)
         // 这里的 customEventData 参数就等于你之前设置的 'foobar'
     }
 }
