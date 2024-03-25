@@ -78,14 +78,16 @@ export class example extends Component {
         pageChangedEventHandler.customEventData = 'foobar';
 
         const page = this.node.getComponent(PageView);
-        page.clickEvents.push(pageChangedEventHandler);
+        page.pageEvents.push(pageChangedEventHandler);
     }
 
-    callback(event: Event, customEventData: string){
-        // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
-        const node = event.target as Node;
-        const pageview = node.getComponent(PageView);
-        console.log(customEventData); // foobar
+    callback(pageview:PageView, eventType:string, customEventData:string){
+		console.log(`callback  pageview: `,pageview, `eventType:${eventType} customEventData:${customEventData}`)
+		////输出callback  pageview:  PageView {_objFlags: 124928, _name: 'pageView-horizontal<PageView>', node: Node, _enabled: true, __prefab: CompPrefabInfo, …} eventType:page-turning customEventData:foobar
+
+        // 这里 pageview 是一个 PageView 组件对象实例
+        // 这里的 eventType === PageView.EventType enum 里面的值
+        // 这里的 customEventData 参数就等于你之前设置的 'foobar'
     }
 }
 ```
